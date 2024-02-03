@@ -1,3 +1,5 @@
+import { Client } from "../entities/clients";
+
 export namespace CreateClientRepository {
   export interface Params {
     name: string;
@@ -5,7 +7,7 @@ export namespace CreateClientRepository {
     phone: string;
   }
 
-  export type Response = Promise<Client>;
+  export type Response = Promise<Client.Model>;
 
   export interface Contract {
     create(

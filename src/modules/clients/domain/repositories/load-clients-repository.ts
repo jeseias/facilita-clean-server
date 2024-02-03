@@ -1,3 +1,5 @@
+import { Client } from "../entities/clients";
+
 export namespace LoadClientsRepository {
   export interface Params {
     page: number;
@@ -5,7 +7,7 @@ export namespace LoadClientsRepository {
   }
 
   export type Response = Promise<{
-    clients: Client[];
+    clients: Client.Model[];
     totalElements: number;
   }>;
 
