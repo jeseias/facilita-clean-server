@@ -7,10 +7,11 @@ import {
   registerClientControllerValidation,
 } from "./register-client-controller.helpers";
 import { ZodObjectValidation } from "@/shared/validations";
+import { clientPgRepository } from "@/modules/clients/infra/clients-pg-repository";
 
 type Req = Http.Request<RegisterClientReqBody>;
 
-export const makeCreateClientController = () => {
+export const makeRegisterClientController = () => {
   class RegisterClientController extends Controller {
     constructor(private readonly useCase: RegisterClientUseCase) {}
 
@@ -33,6 +34,6 @@ export const makeCreateClientController = () => {
     }
   }
 
-  const useCase = new RegisterClientUseCase();
+  const useCase = new RegisterClientUseCase(clientPgRepository);
   return new RegisterClientController(useCase);
 };

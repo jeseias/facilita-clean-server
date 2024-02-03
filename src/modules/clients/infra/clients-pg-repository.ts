@@ -24,3 +24,5 @@ export class ClientPgRepository implements ClientRepository {
     };
   }
 }
+
+export const clientPgRepository = new ClientPgRepository()
