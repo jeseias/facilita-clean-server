@@ -7,7 +7,9 @@ type Params = CreateClientRepository.Params;
 type Result = Client.Model;
 
 export class RegisterClientUseCase extends UseCase<Params, Result> {
-  constructor(private readonly clientRepository: ClientRepository) {}
+  constructor(private readonly clientRepository: ClientRepository) {
+    super();
+  }
 
   protected override async perform(
     params: Params

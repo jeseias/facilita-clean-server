@@ -13,7 +13,9 @@ type Req = Http.Request<RegisterClientReqBody>;
 
 export const makeRegisterClientController = () => {
   class RegisterClientController extends Controller {
-    constructor(private readonly useCase: RegisterClientUseCase) {}
+    constructor(private readonly useCase: RegisterClientUseCase) {
+      super();
+    }
 
     override async perform(httpRequest: Req): Promise<Http.Response<unknown>> {
       const operation = await this.useCase.execute(

@@ -1,5 +1,5 @@
 import { fastifyRouteAdapter } from "@/adapters/fastify-route-adapter";
-import fastify, { FastifyInstance } from "fastify";
+import { FastifyInstance } from "fastify";
 import { makeLoadClientsController, makeRegisterClientController } from "./controllers";
 
 export const clientRoutes = (app: FastifyInstance) => {

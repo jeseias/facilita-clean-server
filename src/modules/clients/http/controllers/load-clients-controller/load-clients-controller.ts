@@ -19,7 +19,9 @@ export const makeLoadClientsController = () => {
     unknown,
     LoadClientReqQuery
   > {
-    constructor(private readonly useCase: LoadClientsUseCase) {}
+    constructor(private readonly useCase: LoadClientsUseCase) {
+      super();
+    }
 
     override async perform(httpRequest: Req): Promise<Http.Response<unknown>> {
       const operation = await this.useCase.execute({ ...httpRequest.query });
