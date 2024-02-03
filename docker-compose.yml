@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  facilita-juridico-api-pg:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USERNAME=postgress
+      - POSTGRESQL_PASSWORD=postgress
+      - POSTGRESQL_DATABASE=postgress
+  facilita-juridico-pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 82:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgress@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=postgress
