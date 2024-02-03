@@ -1,5 +1,7 @@
-class Client {
-  name: string;
-  email: string;
-  phone: string;
+export namespace Client {
+  export interface Model {
+    name: string;
+    email: string;
+    model: string;
+  }
 }
