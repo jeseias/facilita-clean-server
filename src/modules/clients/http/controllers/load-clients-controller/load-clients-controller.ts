@@ -2,7 +2,7 @@ import {
   LoadClientsUseCase,
 } from "@/modules/clients/domain/use-cases";
 import { Controller } from "@/shared";
-import { created } from "@/shared/helpers";
+import { ok } from "@/shared/helpers";
 import { Http, Validator } from "@/shared/protocols";
 import { ZodObjectValidation } from "@/shared/validations";
 import {
@@ -26,7 +26,7 @@ export const makeLoadClientsController = () => {
     override async perform(httpRequest: Req): Promise<Http.Response<unknown>> {
       const operation = await this.useCase.execute({ ...httpRequest.query });
 
-      return created(operation.result);
+      return ok(operation.result);
     }
 
     override buildValidators(httpRequest: Req): Validator[] {
