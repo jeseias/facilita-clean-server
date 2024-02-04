@@ -1,10 +1,9 @@
 import { UseCase, UseCaseResponse } from "@/shared";
-import { CreateClientRepository } from "../../repositories/create-client-repository";
-import { Client } from "../../entities/clients";
 import { ClientRepository } from "../../repositories";
+import { Client } from "@prisma/client";
 
-type Params = CreateClientRepository.Params;
-type Result = Client.Model;
+type Params = Omit<Client, "id">;
+type Result = Client;
 
 export class RegisterClientUseCase extends UseCase<Params, Result> {
   constructor(private readonly clientRepository: ClientRepository) {

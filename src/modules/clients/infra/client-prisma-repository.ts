@@ -1,12 +1,34 @@
+import { prisma } from "@/lib/prisma";
 import { ClientRepository } from "../domain/repositories";
 import { CreateClientRepository } from "../domain/repositories/create-client-repository";
 import { LoadClientsRepository } from "../domain/repositories/load-clients-repository";
 
-export class ClientPrismaRepository implements ClientRepository {
-  create(params: CreateClientRepository.Params): CreateClientRepository.Response {
-    
+class ClientPrismaRepository implements ClientRepository {
+  async create(
+    params: CreateClientRepository.Params
+  ): CreateClientRepository.Response {
+    const client = await prisma.client.create({
+      data: params,
+    });
+
+    return client;
   }
-  load(params: LoadClientsRepository.Params): LoadClientsRepository.Response {
-      
+
+  async load(
+    params: LoadClientsRepository.Params
+  ): LoadClientsRepository.Response {
+    const skip = (params.page - 1) * params.limit;
+    const clients = await prisma.client.findMany({
+      skip,
+      take: params.limit,
+    });
+    const totalElements = await prisma.client.count();
+
+    return {
+      clients,
+      totalElements,
+    };
   }
 }
+
+export const clientPrismaRepository = new ClientPrismaRepository();

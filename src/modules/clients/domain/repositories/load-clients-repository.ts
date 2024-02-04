@@ -1,4 +1,4 @@
-import { Client } from "../entities/clients";
+import { Client } from "@prisma/client";
 
 export namespace LoadClientsRepository {
   export interface Params {
@@ -7,7 +7,7 @@ export namespace LoadClientsRepository {
   }
 
   export type Response = Promise<{
-    clients: Client.Model[];
+    clients: Client[];
     totalElements: number;
   }>;
 

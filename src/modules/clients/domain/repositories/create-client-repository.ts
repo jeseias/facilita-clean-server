@@ -1,4 +1,4 @@
-import { Client } from "../entities/clients";
+import { Client } from "@prisma/client";
 
 export namespace CreateClientRepository {
   export interface Params {
@@ -7,7 +7,7 @@ export namespace CreateClientRepository {
     phone: string;
   }
 
-  export type Response = Promise<Client.Model>;
+  export type Response = Promise<Client>;
 
   export interface Contract {
     create(

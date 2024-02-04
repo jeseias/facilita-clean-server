@@ -9,7 +9,7 @@ import {
   LoadClientReqQuery,
   loadClientsControllerValidation,
 } from "./load-clients-controller.helpers";
-import { clientPgRepository } from "@/modules/clients/infra/clients-pg-repository";
+import { clientPrismaRepository } from "@/modules/clients/infra/client-prisma-repository";
 
 type Req = Http.Request<unknown, unknown, LoadClientReqQuery>;
 
@@ -39,6 +39,6 @@ export const makeLoadClientsController = () => {
     }
   }
 
-  const useCase = new LoadClientsUseCase(clientPgRepository);
+  const useCase = new LoadClientsUseCase(clientPrismaRepository);
   return new LoadClientController(useCase);
 };

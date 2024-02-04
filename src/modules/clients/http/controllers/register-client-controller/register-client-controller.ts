@@ -7,7 +7,7 @@ import {
   registerClientControllerValidation,
 } from "./register-client-controller.helpers";
 import { ZodObjectValidation } from "@/shared/validations";
-import { clientPgRepository } from "@/modules/clients/infra/clients-pg-repository";
+import { clientPrismaRepository } from "@/modules/clients/infra/client-prisma-repository";
 
 type Req = Http.Request<RegisterClientReqBody>;
 
@@ -36,6 +36,6 @@ export const makeRegisterClientController = () => {
     }
   }
 
-  const useCase = new RegisterClientUseCase(clientPgRepository);
+  const useCase = new RegisterClientUseCase(clientPrismaRepository);
   return new RegisterClientController(useCase);
 };
