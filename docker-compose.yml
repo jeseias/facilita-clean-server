@@ -6,13 +6,13 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USERNAME=postgress
-      - POSTGRESQL_PASSWORD=postgress
-      - POSTGRESQL_DATABASE=postgress
+      - POSTGRES_USERNAME=facilta
+      - POSTGRESQL_PASSWORD=facilta
+      - POSTGRESQL_DATABASE=facilta
   facilita-juridico-pgadmin:
     image: dpage/pgadmin4
     ports:
       - 82:80
     environment:
-      - PGADMIN_DEFAULT_EMAIL=postgress@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=postgress
+      - PGADMIN_DEFAULT_EMAIL=facilta@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=facilta

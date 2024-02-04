@@ -1,4 +1,4 @@
-import { pgClient } from "@/shared/infra";
+import { pgClient } from "@/server";
 import { ClientRepository } from "../domain/repositories";
 import { CreateClientRepository } from "../domain/repositories/create-client-repository";
 import { LoadClientsRepository } from "../domain/repositories/load-clients-repository";
@@ -12,7 +12,8 @@ export class ClientPgRepository implements ClientRepository {
       [params.name, params.email, params.phone]
     );
 
-    console.log(client)
+    console.log(client);
+    return {} as any;
   }
 
   async load(
@@ -25,4 +26,4 @@ export class ClientPgRepository implements ClientRepository {
   }
 }
 
-export const clientPgRepository = new ClientPgRepository()
+export const clientPgRepository = new ClientPgRepository();
