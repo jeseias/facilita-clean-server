@@ -1,4 +1,4 @@
-import { fastifyRouteAdapter } from "@/adapters/fastify-route-adapter";
+import { fastifyRouteAdapter } from "@/main/adapters/fastify-route-adapter";
 import { FastifyInstance } from "fastify";
 import { makeLoadClientsController, makeRegisterClientController } from "./controllers";
 
