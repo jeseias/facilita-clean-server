@@ -43,7 +43,7 @@ class ClientPrismaRepository implements ClientRepository {
     params: LoadClosestClientsRepository.Params
   ): LoadClosestClientsRepository.Response {
     const clients: Client[] = await prisma.$queryRaw`
-      SELECT id, position_x, position_y, sqrt(position_x * position_x + position_y * position_y) AS distance
+      SELECT id, name, email, position_x, position_y, sqrt(position_x * position_x + position_y * position_y) AS distance
       FROM "Client"
       ORDER BY distance
       LIMIT 10;`;

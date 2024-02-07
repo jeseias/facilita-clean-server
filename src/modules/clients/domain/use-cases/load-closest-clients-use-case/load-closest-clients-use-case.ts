@@ -19,6 +19,6 @@ export class LoadClosestClientsUseCase extends UseCase<Params, Response> {
       position_y: params?.position_y || 0,
     });
 
-    return this.casePassed({ clients });
-  }
+    return this.casePassed(clients);
+  } 
 }
