@@ -16,8 +16,8 @@ export const makeLoadClosestClientsController = () => {
 
     override async perform(httpRequest: Req): Promise<Http.Response<unknown>> {
       const operation = await this.useCase.execute({
-        position_x: httpRequest.query.position_x,
-        position_y: httpRequest.query.position_y,
+        position_x: httpRequest.query?.position_x,
+        position_y: httpRequest.query?.position_y,
       });
 
       if (operation?.failed) {
