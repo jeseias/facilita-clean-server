@@ -20,6 +20,7 @@ export class LoadClientsUseCase extends UseCase<Params, Result> {
     const result = await this.clientRepository.load({
       limit: params.limit || 20,
       page: params.page || 1,
+      keyword: params?.keyword,
     });
     return this.casePassed(result);
   }

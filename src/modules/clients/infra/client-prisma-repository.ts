@@ -21,6 +21,13 @@ class ClientPrismaRepository implements ClientRepository {
     const clients = await prisma.client.findMany({
       skip,
       take: params.limit,
+      where: {
+        OR: [
+          { email: { contains: params.keyword, mode: "insensitive" } },
+          { phone: { contains: params.keyword, mode: "insensitive" } },
+          { name: { contains: params.keyword, mode: "insensitive" } },
+        ],
+      },
     });
     const totalElements = await prisma.client.count();
 

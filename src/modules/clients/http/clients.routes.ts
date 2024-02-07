@@ -13,6 +13,7 @@ export const clientRoutes = (app: FastifyInstance) => {
         properties: {
           limit: { type: 'number' },
           page: { type: 'number' },
+          keyword: { type: 'string' },
         }
       }
     }

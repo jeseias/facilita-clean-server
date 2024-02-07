@@ -27,6 +27,7 @@ export const makeLoadClientsController = () => {
       const operation = await this.useCase.execute({
         page: httpRequest.query?.page,
         limit: httpRequest.query?.limit,
+        keyword: httpRequest.query?.keyword,
       });
 
       return ok(operation.result);
