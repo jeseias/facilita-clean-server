@@ -31,6 +31,8 @@ export const makeRegisterClientController = () => {
           phone: httpRequest.body?.phone,
           email: httpRequest.body?.email,
           name: httpRequest.body?.name,
+          position_x: httpRequest.body?.position_x,
+          position_y: httpRequest.body?.position_y,
         } as RegisterClientReqBody),
       ];
     }

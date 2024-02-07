@@ -23,9 +23,9 @@ class ClientPrismaRepository implements ClientRepository {
       take: params.limit,
       where: {
         OR: [
-          { email: { contains: params.keyword, mode: "insensitive" } },
-          { phone: { contains: params.keyword, mode: "insensitive" } },
-          { name: { contains: params.keyword, mode: "insensitive" } },
+          { email: { contains: params?.keyword || "", mode: "insensitive" } },
+          { phone: { contains: params?.keyword || "", mode: "insensitive" } },
+          { name: { contains: params?.keyword || "", mode: "insensitive" } },
         ],
       },
     });

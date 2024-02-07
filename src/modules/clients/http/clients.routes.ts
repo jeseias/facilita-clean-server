@@ -5,7 +5,24 @@ import { makeLoadClientsController, makeRegisterClientController } from "./contr
 export const clientRoutes = (app: FastifyInstance) => {
   const ROUTE = "/clients" as const;
 
-  app.post(ROUTE, fastifyRouteAdapter(makeRegisterClientController()));
+  app.post(
+    ROUTE,
+    {
+      schema: {
+        body: {
+          type: "object",
+          properties: {
+            name: { type: "string" },
+            email: { type: "string" },
+            phone: { type: "string" },
+            position_x: { type: "number" },
+            position_y: { type: "number" },
+          },
+        },
+      },
+    },
+    fastifyRouteAdapter(makeRegisterClientController())
+  );
   app.get(ROUTE, {
     schema: {
       querystring: {

@@ -5,6 +5,8 @@ export namespace CreateClientRepository {
     name: string;
     email: string;
     phone: string;
+    position_y: number
+    position_x: number
   }
 
   export type Response = Promise<Client>;
