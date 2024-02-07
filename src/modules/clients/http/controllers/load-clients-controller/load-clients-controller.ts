@@ -24,7 +24,10 @@ export const makeLoadClientsController = () => {
     }
 
     override async perform(httpRequest: Req): Promise<Http.Response<unknown>> {
-      const operation = await this.useCase.execute({ ...httpRequest.query });
+      const operation = await this.useCase.execute({
+        page: httpRequest.query?.page,
+        limit: httpRequest.query?.limit,
+      });
 
       return ok(operation.result);
     }

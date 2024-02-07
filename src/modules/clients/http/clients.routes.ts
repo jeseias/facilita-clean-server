@@ -6,5 +6,15 @@ export const clientRoutes = (app: FastifyInstance) => {
   const ROUTE = "/clients" as const;
 
   app.post(ROUTE, fastifyRouteAdapter(makeRegisterClientController()));
-  app.get(ROUTE, fastifyRouteAdapter(makeLoadClientsController()));
+  app.get(ROUTE, {
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          limit: { type: 'number' },
+          page: { type: 'number' },
+        }
+      }
+    }
+  },fastifyRouteAdapter(makeLoadClientsController()));
 };
