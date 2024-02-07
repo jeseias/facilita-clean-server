@@ -1,6 +1,7 @@
 import { fastifyRouteAdapter } from "@/main/adapters/fastify-route-adapter";
 import { FastifyInstance } from "fastify";
 import { makeLoadClientsController, makeRegisterClientController } from "./controllers";
+import { makeLoadClosestClientsController } from "./controllers/load-closest-clients/load-closest-clients-controller";
 
 export const clientRoutes = (app: FastifyInstance) => {
   const ROUTE = "/clients" as const;
@@ -35,4 +36,16 @@ export const clientRoutes = (app: FastifyInstance) => {
       }
     }
   },fastifyRouteAdapter(makeLoadClientsController()));
+
+  app.get(`${ROUTE}/location`, {
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          position_x: { type: 'number' },
+          position_y: { type: 'number' },
+        }
+      }
+    }
+  },fastifyRouteAdapter(makeLoadClosestClientsController()));
 };

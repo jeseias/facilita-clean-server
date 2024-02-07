@@ -5,10 +5,10 @@ export namespace Http {
     Query = any,
     Headers = any
   > {
-    body?: Body;
-    params?: Params;
-    query?: Query;
-    headers?: Headers;
+    body: Body;
+    params: Params;
+    query: Query;
+    headers: Headers;
   }
 
   export interface Response<Body = unknown> {

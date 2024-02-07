@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { ClientRepository } from "../domain/repositories";
 import { CreateClientRepository } from "../domain/repositories/create-client-repository";
 import { LoadClientsRepository } from "../domain/repositories/load-clients-repository";
+import { LoadClosestClientsRepository } from "../domain/repositories/load-closest-clients-repository";
 
 class ClientPrismaRepository implements ClientRepository {
   async create(
@@ -35,6 +36,13 @@ class ClientPrismaRepository implements ClientRepository {
       clients,
       totalElements,
     };
+  }
+
+  async loadClosestClients(
+    params: LoadClosestClientsRepository.Params
+  ): LoadClosestClientsRepository.Response {
+    const clients = await prisma.client.findMany();
+    return { clients };
   }
 }
 
